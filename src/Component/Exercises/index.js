@@ -33,13 +33,17 @@ export default ({
       <Paper style={styles.Paper}>
         {exercises.map(([group, exercises]) =>
           !category || category === group ? (
-            <Fragment>
+            <Fragment key={group}>
               <Typography variant="h6" style={{ textTransform: 'capitalize' }}>
                 {group}
               </Typography>
               <List component="ul">
                 {exercises.map(exercise => (
-                  <ListItem button onClick={() => onSelect(exercise.id)}>
+                  <ListItem
+                    key={exercise.id}
+                    button
+                    onClick={() => onSelect(exercise.id)}
+                  >
                     <ListItemText primary={exercise.title} />
                   </ListItem>
                 ))}
